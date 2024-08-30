@@ -1,6 +1,7 @@
 package com.example.ToDoList2.controllert;
 
 import com.example.ToDoList2.entity.Task;
+import com.example.ToDoList2.exception.ResourceNotFoundException;
 import com.example.ToDoList2.repo.TaskRepo;
 import com.example.ToDoList2.service.ServiceTask;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,8 @@ public class Controller {
     }
     @GetMapping("{id}")
     public Optional<Task> getTaskByID(@PathVariable Long id){
-        return service.getTaskById(id);
+        //Test errore personalizzato
+        return Optional.ofNullable(service.getTaskById(id).orElseThrow(() -> new ResourceNotFoundException("Task with id " + id + " not found")));
     }
 
     @PutMapping("/{id}")
