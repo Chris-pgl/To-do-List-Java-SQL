@@ -25,7 +25,7 @@ public class Task {
     @NotNull(message = "Completed status is mandatory")
     private boolean completed;
 
-    @NotNull(message = "Completed status is mandatory")
+    @NotBlank(message = "Completed status is mandatory")
     private String priority; // meglio un Enum? Alta, Media, Bassa?
 
     private LocalDate dueDate; //Campo per la scadenza
